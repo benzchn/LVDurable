@@ -15,6 +15,13 @@
             </span>
             <label style="display: flex;justify-content: center;align-items: center; color:#ffffff;">
                 ------------------------ </label>
+
+            @if (session()->has('message'))
+            <div class="alert alert-danger">
+                {{ session()->get('message') }}
+            </div><br />
+            @endif
+
             <div>
                 <form method="POST" class="login100-form validate-form" action="{{ route('login') }}">
                     @csrf
@@ -49,45 +56,67 @@
                     </div>
 
                     <div class="container-login100-form-btn p-t-10">
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" name="remember" id="remember"
-                                    {{ old('remember') ? 'checked' : '' }}>
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" name="remember" id="remember"
+                                {{ old('remember') ? 'checked' : '' }}>
 
-                                <label class="form-check-label" for="remember">
-                                    <font color="white">{{ __('Remember Me') }}</font>
-                                </label>
-                            </div>
+                            <label class="form-check-label" for="remember">
+                                <font color="white">{{ __('Remember Me') }}</font>
+                            </label>
+                        </div>
                     </div>
 
                     <div class="container-login100-form-btn p-t-10">
-                            <button type="submit" class="login100-form-btn">
-                                {{ __('Login') }}
-                            </button>
+                        <button type="submit" class="login100-form-btn">
+                            {{ __('Login') }}
+                        </button>
 
-                            <div class="text-center w-full p-t-25">
-                                <a class="txt1" name="create_user" href="{{ route('register') }}">
-                                    สมัครสมาชิก
-                                </a>
-                                <span class="txt2">|</span>
-                                <a class="txt1" name="" href="#">
-                                    คู่มือใช้งาน
-                                </a>
-                            </div>
-
-                            @if (Route::has('password.request'))
-                            <a class="btn btn-link" href="{{ route('password.request') }}">
-                                {{ __('Forgot Your Password?') }}
+                        <div class="text-center w-full p-t-25">
+                            <a class="txt1" name="create_user" href="{{ route('register') }}">
+                                สมัครสมาชิก
                             </a>
-                            @endif
+                            <span class="txt2">|</span>
+                            <a class="txt1" name="" href="#">
+                                คู่มือใช้งาน
+                            </a>
                         </div>
+
+                        @if (Route::has('password.request'))
+                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                            {{ __('Forgot Your Password?') }}
+                        </a>
+                        @endif
                     </div>
-                </form>
             </div>
+            </form>
         </div>
     </div>
+</div>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.css">
 
-    {{-- <div class="container">
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/8.11.8/sweetalert2.min.js"></script>
+
+<script>
+    $('#btnresult').on('click', function () {
+        console.log("btn click");
+        var data = $('#namid').val();
+
+        console.log(data);
+
+        if (auth() - > user() - > user_status == 0) {
+            Swal.fire({
+                title: 'กรุณารอ การยืนยันการสมัคร จากแอดมิน!!',
+                type: 'warning',
+                showCloseButton: true
+            })
+
+        }
+    })
+
+</script>
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

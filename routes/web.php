@@ -12,10 +12,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
+// Route::get('/login', function () {
+//     return view('auth.login');
+// });
+
 Auth::routes();
-Route::post('/register/personnel', 'Auth\RegisterController@createPersonnel');
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+});

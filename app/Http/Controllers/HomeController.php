@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -24,21 +23,25 @@ class HomeController extends Controller
      */
     public function index()
     {
+        // if (auth()->user()->user_status == 1) {
+        if (auth()->user()->role == 'admin') {
+            return view('admin.home-admin');
+        } elseif (auth()->user()->role == 'personal') {
 
-        // auth()->user()->assignRole('student');
+            return view('user.home-personal');
+        } elseif (auth()->user()->role == 'student') {
 
-        if (auth()->user()->hasRole("admin")) {
 
-            $user = User::all();
-            return view('home-ad', compact('user'));
-        } else if (auth()->user()->hasRole('personnal')) {
-
-            $user = User::all();
-            return view('home-personnal', compact('user'));
+            return view('user.home-student');
         } else {
-            $user = User::all();
-            return view('home', compact('user'));
+            return error_reporting();
         }
-        // return view('home');
+        // }
+        // elseif (auth()->user()->user_status == 0) {
+        //     return back()->with('message', 'กรุณารอ การยืนยันการสมัคร จากแอดมิน!!');
+        // }
+        // else {
+        //     return redirect()->back()->withErrors('อีเมล หรือ รหัสผ่าน ไม่ถูกต้อง!! กรุณากรอกข้อมูลให้ถูกต้อง');
+        // }
     }
 }
