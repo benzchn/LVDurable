@@ -29,7 +29,7 @@
                     <div class="wrap-input100 validate-input m-b-10" data-validate="กรุณากรอกชื่อผู้ใช้งาน">
                         {{-- <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Email') }}</label>
                         --}}
-                        <input id="email" type="email" class="input100" name="email" value="{{ old('email') }}"
+                        <input id="user_id" type="text" class="input100" name="user_id" value="{{ old('user_id') }}"
                             placeholder="ชื่อผู้ใช้งาน" required autofocus>
                         <span class="focus-input100"></span>
                         <span class="symbol-input100">

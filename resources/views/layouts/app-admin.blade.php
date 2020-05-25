@@ -20,7 +20,15 @@
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 
     <!-- DataTables -->
-    <link rel="stylesheet" href="{{ asset('plugins/datatables/jquery.dataTables.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('plugins/datatables/jquery.dataTables.min.css') }}"> --}}
+
+    {{-- datatable --}}
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+
+    
+    {{-- <link rel="stylesheet" type="text/css"
+        href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"> --}}
+
 
     <!-- file input -->
     <link rel="stylesheet" href="{{ asset('plugins/fileinput/css/fileinput.min.css') }}">
@@ -416,13 +424,13 @@
 
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <a href="dashboard.php"><img src="../images/cs_logo.png" width="200px" alt="Image"></a>
+                <a href="/admin"><img src="../images/cs_logo.png" width="200px" alt="Image"></a>
                 <ul class="nav navbar-nav navbar-right">
-                    <li id="navDashboard"><a href="index.php">
+                    <li id="navDashboard"><a href="/admin">
                             <!-- <img
                                 src='https://image.flaticon.com/icons/svg/2490/2490641.svg' width="21px" height="21px"> -->
                             หน้าแรก</a></li>
-                    <li id="navDashboard"><a href="categories.php">
+                    <li id="navDashboard"><a href="/categories">
                             <!-- <img
                                 src='https://image.flaticon.com/icons/svg/641/641808.svg' width="21px" height="21px"> -->
                             คลัง</a></li>
@@ -498,7 +506,7 @@
         @yield('body')
     </div>
 
-
+    <script src="{{ asset('js/categories.js') }}"></script>
 	<!-- file input -->
 	<script src="{{ asset('plugins/fileinput/js/plugins/canvas-to-blob.min.js') }}" type="text/javascript"></script>
 	<script src="{{ asset('plugins/fileinput/js/plugins/sortable.min.js') }}" type="text/javascript"></script>
@@ -507,7 +515,19 @@
 
 
 	<!-- DataTables -->
-	<script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    {{-- <script src="{{ asset('plugins/datatables/jquery.dataTables.min.js') }}"></script> --}}
+
+    <!-- Date Table -->
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js">
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable();
+    });
+
+</script>
 
 
 </body>

@@ -25,4 +25,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth']], function () {
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('categories', 'CategoriesController');
+    Route::resource('categorieslist', 'CategoriesListController');
+    Route::resource('equipment', 'EquipmentController');
+    Route::get('/admin', function () {
+        return view('admin.home-admin');
+    });
 });
