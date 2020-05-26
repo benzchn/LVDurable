@@ -25,7 +25,7 @@
     {{-- datatable --}}
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
 
-    
+
     {{-- <link rel="stylesheet" type="text/css"
         href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css"> --}}
 
@@ -448,7 +448,7 @@
                             <!-- <img
                                 src='https://image.flaticon.com/icons/svg/630/630757.svg' width="21px" height="21px"> -->
                             การยืม </a></li>
-                    <li id="navNews"><a href="news_ad.php">
+                    <li id="navNews"><a href="/news">
                             <!-- <img
                                 src='https://image.flaticon.com/icons/svg/630/630757.svg' width="21px" height="21px"> -->
                             ประกาศข่าวสาร </a></li>

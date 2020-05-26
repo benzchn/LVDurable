@@ -7,13 +7,13 @@
 
         <ol class="breadcrumb">
             <li><a href="/categories">คลัง</a></li>
-            <li class="active">{{ $categorieslist1->categories->categories_name }}</li>
+            <li class="active">{{ $categories1 }}</li>
         </ol>
 
         <div class="panel panel-default">
             <div class="panel-heading">
 
-                 <h3 style="text-align:center;">{{ $categorieslist1->categories->categories_name }}
+                 <h3 style="text-align:center;">{{ $categories1 }}</h3>
                 {{-- <h3 style="text-align:center;">list</h3> --}}
             </div>
             <!-- /panel-heading -->

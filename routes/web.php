@@ -28,6 +28,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('categories', 'CategoriesController');
     Route::resource('categorieslist', 'CategoriesListController');
     Route::resource('equipment', 'EquipmentController');
+    Route::resource('news', 'NewsController');
     Route::get('/admin', function () {
         return view('admin.home-admin');
     });
