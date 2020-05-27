@@ -444,7 +444,7 @@
                                     รายการซ่อม </a></li>
                         </ul>
                     </li>
-                    <li id="navRent"><a href="rent_detail.php">
+                    <li id="navRent"><a href="/rent">
                             <!-- <img
                                 src='https://image.flaticon.com/icons/svg/630/630757.svg' width="21px" height="21px"> -->
                             การยืม </a></li>
@@ -453,7 +453,7 @@
                                 src='https://image.flaticon.com/icons/svg/630/630757.svg' width="21px" height="21px"> -->
                             ประกาศข่าวสาร </a></li>
 
-                    <li id="navManageUser"><a href="manageUser.php">
+                    <li id="navManageUser"><a href="/manageuser">
                             <!-- <img
                                 src='https://image.flaticon.com/icons/svg/2622/2622682.svg' width="21px" height="21px"> -->
                             จัดการบัญชีผู้ใช้ </a></li>
@@ -463,7 +463,7 @@
                             &nbsp;({{ Auth::user()->name }})&nbsp;
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li id="topNavSetting"><a href="setting.php"><img src='https://image.flaticon.com/icons/svg/1293/1293874.svg' width="21px" height="21px"> ตั้งค่า</a></li>
+                            <li id="topNavSetting"><a href="{{ route('user.edit', Auth::user()->id) }}"><img src='https://image.flaticon.com/icons/svg/1293/1293874.svg' width="21px" height="21px"> ตั้งค่า</a></li>
                             {{-- <li id="topNavLogout"><a href="{{ route('logout') }}" ><img src='https://image.flaticon.com/icons/svg/1716/1716282.svg' width="21px" height="21px"> ออกจากระบบ</a></li> --}}
                              <li id="topNavSetting"><a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

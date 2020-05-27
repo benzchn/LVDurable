@@ -24,12 +24,19 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth']], function () {
+
     Route::get('/home', 'HomeController@index')->name('home');
     Route::resource('categories', 'CategoriesController');
     Route::resource('categorieslist', 'CategoriesListController');
     Route::resource('equipment', 'EquipmentController');
     Route::resource('news', 'NewsController');
+    Route::resource('rent', 'RentController');
+    Route::resource('user', 'UserController');
+
     Route::get('/admin', function () {
         return view('admin.home-admin');
+    });
+    Route::get('/manageuser', function () {
+        return view('admin.manageuser');
     });
 });

@@ -83,25 +83,34 @@
                 </div><br />
                 @endif
 
-                <article id='featured'>
-                    <div>
-                        @foreach ($news as $news)
-                        <div style='display: flex; justify-content: center; align-items: center;'>
-                            <img src="{{ asset('images/' . $news->news_image) }}" style='width:50px;'>
-                        </div>
-                        <h3 style='color:black;'>หัวข้อ : "{{ $news->news_title }}"</h3>
-                        <p>ประกาศเมื่อ : "{{ $news->created_at }}" </p>
-                        <p>โดย : "{{ $news->news_create }}."</p>
-                        <a href='#' class='btn btn-danger' role='button' alt='ลบ' style='color:white;'
-                            data-toggle='modal' data-target="#removeNewsModal"><i
-                                class='glyphicon glyphicon-remove'></i></a>
-                        <a href='#' class='btn btn-warning' role='button' alt='แก้ไข' style='color:white;'><i
-                                class='glyphicon glyphicon-edit' data-toggle='modal' data-target="#editNewsModal"></i></a>
-                        @endforeach
-                    </div>
+                @foreach ($news as $news)
+                    @if($news->news_status == 1)
+                        <article id='featured'>
+                            <div>
 
-                </article>
+                                @if ($news->news_image =='')
 
+                                @else
+                                    <div style='display: flex; justify-content: center; align-items: center;'>
+                                        <img src="{{ asset('images/' . $news->news_image) }}" style='width:50px;'>
+                                    </div>
+                                    <h3 style='color:black;'>หัวข้อ : {{ $news->news_title }}</h3>
+                                    <p>ประกาศเมื่อ : {{ \Carbon\Carbon::parse($news->created_at)->format('d/m/Y') }} </p>
+                                    <p>โดย : {{ $news->news_create }} </p>
+                                    <a href='#' class='btn btn-danger' role='button' alt='ลบ' style='color:white;'
+                                        data-toggle='modal' data-target="#removeNewsModal"><i
+                                            class='glyphicon glyphicon-remove'></i></a>
+                                    <a href='#' class='btn btn-warning' role='button' alt='แก้ไข' style='color:white;'><i
+                                            class='glyphicon glyphicon-edit' data-toggle='modal'
+                                            data-target="#editNewsModal"></i></a>
+                                @endif
+
+
+                            </div>
+
+                        </article>
+                    @endif
+                @endforeach
 
                 <div class="modal fade" id="editNewsModal" tabindex="-1" role="dialog" aria-labelledby='myModalLabel'
                     aria-hidden='true'>
@@ -113,7 +122,8 @@
                                 </button>
                                 <h5 class='modal-title' id='myModalLabel'>แก้ไขประกาศ</h5>
                             </div>
-                            <form action="{{ route('news.update',$news->id) }}"  method='post' enctype="multipart/form-data">
+                            <form action="{{ route('news.update',$news->id) }}" method='post'
+                                enctype="multipart/form-data">
                                 @csrf
                                 {{ method_field('patch') }}
                                 <div class="modal-body">
@@ -126,8 +136,7 @@
                                     <div class="form-group">
                                         <label for="news_detail">รายละเอียด</label>
                                         <textarea type="text" class="form-control" id="news_detail" name="news_detail"
-                                            placeholder="ใส่รายละเอียด"
-                                            required>{{ $news->news_detail }}</textarea>
+                                            placeholder="ใส่รายละเอียด" required>{{ $news->news_detail }}</textarea>
                                     </div>
                                     <div class="form-group">
                                         <label for="">เลือกรูปภาพ</label>
@@ -136,7 +145,7 @@
                                 </div>
 
                                 <div class="modal-footer">
-                                        <button type='button' class='btn btn-secondary' data-dismiss='modal'>ยกเลิก</button>
+                                    <button type='button' class='btn btn-secondary' data-dismiss='modal'>ยกเลิก</button>
                                     <button type='submit' class='btn btn-danger'>บันทึก</button>
                                 </div>
                             </form>
